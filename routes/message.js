@@ -1,4 +1,7 @@
 // stuff
+const express = require('express');
+const router = express.Router();
+router.use(express.json());
 
 app.post('/new/message', (req, res) => {
     const id = req.query.id  //document id

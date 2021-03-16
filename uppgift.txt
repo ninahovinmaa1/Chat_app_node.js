@@ -4,19 +4,18 @@ Ni ska bygga en Slack-klon.
 
 Node-krav
 Kunna sätta upp en server done
-Kunna sätta upp routes
-Kunna använda EJS-templates
-Förstå asynkron programmering
-Kunna använda sockets
-Kunna förstå och använda JSON
-Kunna använda databaser
-Kunna bygga API-providers
+Kunna sätta upp routes done
+Kunna använda EJS-templates done
+Förstå asynkron programmering done
+Kunna använda sockets 
+Kunna förstå och använda JSON done
+Kunna använda databaser done
+Kunna bygga API-providers DONE 15.3.2021 i klassen
 G-krav
 Kunna sätta upp chat-rum/kanaler
-Kunna sätta upp privata chattar med en enskild person
-Skapa konto/logga in med det kontot (email och alias)
+Skapa konto/logga in med det kontot (email och alias) done
 Kunna ladda upp en fil i valfritt användningsområde
-Spara meddelanden, konton osv i databas
+Spara meddelanden, konton osv i databas 
 Visa att man behärskar Node-kraven
 VG-krav
 Lösa 3 av följande krav:
@@ -27,6 +26,8 @@ Mentions
 Uppdatera/radera sina egna chattmeddelanden
 Indikera vilka som är online (uppkopplad mot servern)
 Roller
+Kunna sätta upp privata chattar med en enskild person.
+
 För att kunna få VG måste du ha lämnat in i tid. Du kan bara få VG vid ordinarie inlämning.
 
 Inlämningsuppgiften är individuell, men det är tillåtet att samarbeta så länge du kan redovisa all kod du lämnar in. Redovisning sker genom individuell genomgång med läraren samt inlämning av git-repo.

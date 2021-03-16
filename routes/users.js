@@ -10,6 +10,7 @@ router.get('/', function(req, res, next) {
     res.send('users page. Nothing here, go to users/signup or users/login');
 });
 
+
 // POST users/signup
 router.post('/signup', (req, res, next) => {
     User.register(new User({username: req.body.username}), 
@@ -23,11 +24,19 @@ router.post('/signup', (req, res, next) => {
             passport.authenticate('local')(req, res, () => {
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');
-            res.json({success: true, status: 'Registration Successful!'});
+            //res.json({success: true, status: 'Registration Successful!'});
+            res.redirect('/users/login');
             });
         }       
         });
 });
+
+//GET users/login
+router.get('/login', (req, res) => {
+    res.render('login')
+});
+
+
 
 // POST users/login
 router.post('/login', passport.authenticate('local'), (req, res) => {
@@ -40,8 +49,8 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
 router.get('/logout', (req, res) => {
     if (req.session) {
         req.session.destroy();
-        res.clearCookie('session-id') //delete cookie from client with name session-id
-        res.redirect('/'); //redirected to locahost/3000
+        res.clearCookie('session-id'); //delete cookie from client with name session-id
+        res.redirect('/'); //redirected to localhost/3000
     }
     else {
         var err = new Error('You are not logged in!');
