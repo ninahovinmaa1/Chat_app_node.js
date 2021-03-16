@@ -1,11 +1,10 @@
-const { response } = require('express');
 const express = require('express');
 const router = express.Router();
 router.use(express.json());
 
 //GET mounted to /upload-photo
-router.get('/upload-photo', (req, res) => {
-    response.render('photoUpload')
+router.get('/', (req, res) => {
+    res.render('photoUpload')
 })
 
 //POST mounted to /upload-photo

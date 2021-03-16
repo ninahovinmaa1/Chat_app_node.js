@@ -72,7 +72,7 @@ function auth(req, res, next) {
 }
 
 app.use(auth);
-//app.use(express.static(path.join(__dirname, 'public'))); //static files
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')) ) //static files
 
 //rest of routes mounted to be accessible after authentication
 app.use('/channels', channelsRouter);
