@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 });
 
 
-// POST users/signup
+// POST users/signup, {"username":"admin", "password":"admin"}
 router.post('/signup', (req, res, next) => {
     User.register(new User({username: req.body.username}), 
         req.body.password, (err, user) => {

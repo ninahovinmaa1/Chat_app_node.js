@@ -8,6 +8,7 @@ const passport = require('passport');
 //const expressLayouts = require('express-ejs-layouts');
 const authenticate = require('./authenticate');
 const fileUpload = require('express-fileupload');
+const socket = require('socket.io')
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -59,7 +60,6 @@ app.use('/users', usersRouter);
 
 //authentication
 function auth(req, res, next) {
-    //console.log(req.user);
 
     if (!req.user) {
         var err = new Error('You are not authenticated!');
@@ -77,6 +77,28 @@ app.use(auth);
 app.use('/channels', channelsRouter);
 app.use('/upload-photo', photosRouter);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')) ) //static files, photos in uploads
+app.use('/public', express.static(path.join(__dirname, 'public')) ) //static files
 
 //listen
 app.listen(port, ()=> console.log(`listening on localhost:${port}`));
+
+/*///////chat BE////////
+
+//socket setup
+const io = socket(server); //initializes a new instanse of socket.io by passing the server object.
+
+    //listen to connections events for incoming sockets. When someone connects to our app.
+    io.on('connection', (socket) => {
+        console.log('A user connected');
+
+        socket.on('chat message', (message) => {
+            console.log('Received message: ' + message)
+            io.emit('chat message', message) //broadcars the event from the server to the rest of the users
+        });
+
+        socket.on('disconnect', () => {
+            console.log("User disconnected")
+        })
+    })*/
+
+

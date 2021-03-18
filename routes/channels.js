@@ -33,8 +33,10 @@ router.get('/channelList', (req, res) => {
                 }
 
                 channels.push(channelInfo) //channelInfo is now in channels
+                
             })
-            res.status(200).send(channels)  //sending array of channels (with id + name in each array-item) to frontend
+            res.render('chat', {channel: channels} )
+            //res.status(200).send(channels)  //sending array of channels (with id + name in each array-item) to frontend
         }
     })
 })
@@ -44,7 +46,7 @@ router.post('/new/message', (req, res) => {
     const id = req.query.id  //channel id, name="id" of input element in FE
     const newMessage = req.body   //new message
 
-    mongoData.findByIdAndUpdate(id, { $push: {conversation: newMessage} }, (err,data) => {
+    mongoData.findByIdAndUpdate({_id: id}, { $push: {conversation: newMessage} }, (err,data) => {
         if (err) {
             res.status(500).send(err)
         } else {
