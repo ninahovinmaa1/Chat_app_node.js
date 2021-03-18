@@ -72,11 +72,11 @@ function auth(req, res, next) {
 }
 
 app.use(auth);
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')) ) //static files
 
 //rest of routes mounted to be accessible after authentication
 app.use('/channels', channelsRouter);
 app.use('/upload-photo', photosRouter);
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')) ) //static files, photos in uploads
 
 //listen
 app.listen(port, ()=> console.log(`listening on localhost:${port}`));

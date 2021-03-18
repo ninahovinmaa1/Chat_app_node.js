@@ -12,7 +12,7 @@ Kunna förstå och använda JSON done
 Kunna använda databaser done
 Kunna bygga API-providers DONE 15.3.2021 i klassen
 G-krav
-Kunna sätta upp chat-rum/kanaler
+Kunna sätta upp chat-rum/kanaler 
 Skapa konto/logga in med det kontot (email och alias) done
 Kunna ladda upp en fil i valfritt användningsområde done
 Spara meddelanden, konton osv i databas 

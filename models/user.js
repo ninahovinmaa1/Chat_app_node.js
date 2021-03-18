@@ -6,6 +6,9 @@ const User = new Schema({
     admin: {
         type: Boolean,
         default: false
+    }, 
+    profile_pic: {
+        type: String
     }
 });
 
