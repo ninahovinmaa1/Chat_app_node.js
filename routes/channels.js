@@ -35,7 +35,7 @@ router.get('/channelList', (req, res) => {
                 channels.push(channelInfo) //channelInfo is now in channels
                 
             })
-            res.render('chat', {channel: channels} )
+            res.render('channelList', {channel: channels} )
             //res.status(200).send(channels)  //sending array of channels (with id + name in each array-item) to frontend
         }
     })
@@ -57,7 +57,7 @@ router.post('/new/message', (req, res) => {
 
 // GET all messages in a channel. Mounted on /channels. Example: http://localhost:3000/channels/get/conversation?id=604caa15defd2e2148909c8a
 router.get('/get/conversation', (req, res) => {
-    const id = req.query.id   //req.query.id to know which convo are we in. Comes from FE that makes request, and the id is passed on to this request
+    const id = req.query.id   //req.query.id to know which convo we are in. Comes from FE that makes request, and the id is passed on to this request
 
     mongoData.find({_id: id }, (err, data) => {
         if (err) {

@@ -80,9 +80,9 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')) ) //static f
 app.use('/public', express.static(path.join(__dirname, 'public')) ) //static files
 
 //listen
-app.listen(port, ()=> console.log(`listening on localhost:${port}`));
+const server = app.listen(port, ()=> console.log(`listening on localhost:${port}`));
 
-/*///////chat BE////////
+///////chat BE////////
 
 //socket setup
 const io = socket(server); //initializes a new instanse of socket.io by passing the server object.
@@ -99,6 +99,6 @@ const io = socket(server); //initializes a new instanse of socket.io by passing 
         socket.on('disconnect', () => {
             console.log("User disconnected")
         })
-    })*/
+    })
 
 
