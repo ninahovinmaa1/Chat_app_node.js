@@ -15,7 +15,7 @@ G-krav
 Kunna sätta upp chat-rum/kanaler done
 Skapa konto/logga in med det kontot (email och alias) done
 Kunna ladda upp en fil i valfritt användningsområde done
-Spara meddelanden, konton osv i databas todo: spara chatten
+Spara meddelanden, konton osv i databas done
 Visa att man behärskar Node-kraven done
 VG-krav
 Lösa 3 av följande krav:

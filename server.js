@@ -27,7 +27,8 @@ const url = 'mongodb://localhost:27017/slack-clone';
 const connect = mongoose.connect(url, {
     useCreateIndex: true,
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: true
 });
 
 connect.then((db) => {
@@ -96,30 +97,14 @@ const io = socket(server); //initializes a new instanse of socket.io by passing 
         socket.on('chat message', (data) => { //data includes message+channelId from FE, this is sent to server. Here server processes the data
             let message = data.inputValue
             let channelId = data.channelId
+            let conversation = { message : message }
 
-            mongoData.findByIdAndUpdate({_id: channelId}, { $push: {conversation: message} })
-                .then((data) => {
-                    console.log(data)
+            //save msg to db
+            mongoData.findByIdAndUpdate({ _id: channelId }, { $push: {conversation: conversation}}, {new: true})
+                .then((res) => {
+                    console.log(res)
+                    io.emit('chat message', message)
                 })
-
-            console.log('Received message: ' + message)
-            io.emit('chat message', message) //broadcast the event 'chat message' with message value from the server to the rest of the users
-
-            //ORIGINAL
-            //const id = req.query.id  //channel id, name="id" of input element in FE
-            //const newMessage = message  //new message
-
-            
-            /*mongoData.findByIdAndUpdate({_id: channelId}, { $push: {conversation: newMessage} }, (err,data) => {
-                if (err) {
-                    console.log(err)
-                } else {
-                    console.log(data)
-                }
-            })*/
-
-            
-            
         });
 
         socket.on('disconnect', () => {
