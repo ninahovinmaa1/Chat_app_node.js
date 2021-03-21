@@ -5,11 +5,14 @@ const path = require('path');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const passport = require('passport');
-//const expressLayouts = require('express-ejs-layouts');
 const authenticate = require('./authenticate');
 const fileUpload = require('express-fileupload');
-const socket = require('socket.io')
+const socket = require('socket.io');
 
+//require models
+var mongoData = require('./models/mongoData');
+
+//require routes
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const channelsRouter = require('./routes/channels');
@@ -32,7 +35,6 @@ connect.then((db) => {
 }, (err) => { console.log(err); }); 
 
 //set templating engine
-//app.use(expressLayouts);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -91,9 +93,33 @@ const io = socket(server); //initializes a new instanse of socket.io by passing 
     io.on('connection', (socket) => {
         console.log('A user connected');
 
-        socket.on('chat message', (message) => {
+        socket.on('chat message', (data) => { //data includes message+channelId from FE, this is sent to server. Here server processes the data
+            let message = data.inputValue
+            let channelId = data.channelId
+
+            mongoData.findByIdAndUpdate({_id: channelId}, { $push: {conversation: message} })
+                .then((data) => {
+                    console.log(data)
+                })
+
             console.log('Received message: ' + message)
-            io.emit('chat message', message) //broadcars the event from the server to the rest of the users
+            io.emit('chat message', message) //broadcast the event 'chat message' with message value from the server to the rest of the users
+
+            //ORIGINAL
+            //const id = req.query.id  //channel id, name="id" of input element in FE
+            //const newMessage = message  //new message
+
+            
+            /*mongoData.findByIdAndUpdate({_id: channelId}, { $push: {conversation: newMessage} }, (err,data) => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    console.log(data)
+                }
+            })*/
+
+            
+            
         });
 
         socket.on('disconnect', () => {

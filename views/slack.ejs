@@ -194,6 +194,8 @@
 </head>
 
 <body>
+
+    <!-- /#sidebar-wrapper -->
     <div id="wrapper">
 
         <!-- Sidebar -->
@@ -209,7 +211,7 @@
                 </li>
                 <% for(let i=0; i < channel.length ; i++) { %>
                     <li>
-                        <a href="">#
+                        <a href="get/conversation/?id=<%= channel[i].id%>">#
                             <%= channel[i].name %>
                         </a>
 
@@ -219,34 +221,6 @@
         </div>
         <!-- /#sidebar-wrapper -->
 
-        <!-- Chat Content -->
-        <div id="page-content-wrapper chat-content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1>Chat stuff</h1>
-                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on
-                            smaller
-                            screens, and will appear non-collapsed on larger screens. When toggled using the button
-                            below,
-                            the menu will appear/disappear. On small screens, the page content will be pushed off
-                            canvas.
-                        </p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-
-                        <!--Socket stuff. Messages will be put in a list-->
-                        <ul id="messages"></ul>
-
-                        <form action="" id="form">
-                            <input type="text" id="input" placeholder="type a message">
-                            <button type="submit">Send</button>
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /#page-content-wrapper -->
 
     </div>
     <!-- /#wrapper -->
@@ -258,8 +232,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
         integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
         crossorigin="anonymous"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="../public/chat.js"></script>
-    <!--^chat.js includes const socket = io()-->
+    <script src="/public/channelList.js"></script>
 </body>
 <html>

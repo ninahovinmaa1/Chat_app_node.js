@@ -7,21 +7,20 @@ Kunna sätta upp en server done
 Kunna sätta upp routes done
 Kunna använda EJS-templates done
 Förstå asynkron programmering done
-Kunna använda sockets 
+Kunna använda sockets done
 Kunna förstå och använda JSON done
 Kunna använda databaser done
 Kunna bygga API-providers DONE 15.3.2021 i klassen
 G-krav
-Kunna sätta upp chat-rum/kanaler 
+Kunna sätta upp chat-rum/kanaler done
 Skapa konto/logga in med det kontot (email och alias) done
 Kunna ladda upp en fil i valfritt användningsområde done
-Spara meddelanden, konton osv i databas 
-Visa att man behärskar Node-kraven
+Spara meddelanden, konton osv i databas todo: spara chatten
+Visa att man behärskar Node-kraven done
 VG-krav
 Lösa 3 av följande krav:
 
 Profilsida, kunna ladda upp ny bild
-Stöd för emojis
 Mentions
 Uppdatera/radera sina egna chattmeddelanden
 Indikera vilka som är online (uppkopplad mot servern)

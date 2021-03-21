@@ -35,8 +35,8 @@ router.get('/channelList', (req, res) => {
                 channels.push(channelInfo) //channelInfo is now in channels
                 
             })
-            res.render('channelList', {channel: channels} )
-            //res.status(200).send(channels)  //sending array of channels (with id + name in each array-item) to frontend
+            //res.render('channelList', {channel: channels} )
+            res.render('slack.ejs', {channel: channels})
         }
     })
 })
@@ -63,7 +63,7 @@ router.get('/get/conversation', (req, res) => {
         if (err) {
             res.status(500).send(err)
         } else {
-            res.status(200).send(data)
+            res.render('slackChat', {channel: data})
         }
     })
 })
